@@ -1,0 +1,42 @@
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bg-gradient {
+    background: linear-gradient(to right, #4b91b7, #183a48) !important;
+    color: #fff !important;
+}
+
+.about-content {
+    padding: 50px;
+}
+
+.about-content h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.team-members {
+    margin-top: 50px;
+}
+
+.team-members h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.team-members ul {
+    list-style: none;
+    padding: 0;
+}
+
+.team-members ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}

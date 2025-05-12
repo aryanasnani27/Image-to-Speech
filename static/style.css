@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Jersey+25+Charted&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+.f1 {
+  font-family: "Briem Hand", cursive;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.f2{
+    font-family: "Jersey 25 Charted", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .f3n {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .f3bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .f3italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+
+:root,
+:root.light {
+	--color-bg: #abeeda;
+	--color-fg: #000000;
+	--card-bg-color: #fafafa;
+}
+:root.dark {
+	--color-bg: #263238;
+	--color-fg: #ffffff;
+	--card-bg-color: #607d8b;
+}
+
+
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-fg);
+}
+
+.card {
+	background-color: var(--card-bg-color) !important;
+}
+
+button[type="submit"] {
+    background-color: #2577cf;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"] {
+    background-color: #d31a38;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Libre Baskerville", serif;
+    margin-top: 30px;
+
+}
+
+button[type="button"]:hover {
+    background-color: #b22222;
+}

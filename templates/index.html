@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css' integrity='sha512-XWTTruHZEYJsxV3W/lSXG1n3Q39YIWOstqvmFsdNEEQfHoZ6vm6E9GK2OrF6DSJSpIbRbi+Nn0WDPID9O7xB2Q==' crossorigin='anonymous' />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .about-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .about-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Circular image button for about page -->
+    <a href="{{ url_for('about') }}" class="about-btn">
+        <img src="https://cdn-icons-png.flaticon.com/512/4205/4205993.png" alt="About" class="about-img">
+    </a>
+</div>
+        
+        <!-- Rest of your content -->
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="form-switch text-center my-5">
+                    <input type="checkbox" id="mode" class="form-check-input">
+                    <label for="mode" class="form-check-label"></label>
+                </div>
+                <div class="card shadow">
+                    <div class="card-header">
+                        <div class="fs-4 fw-bold f1">ImageSpeaks</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <h1 class="f3n">An Image To Speech Converter</h1>
+                            <form action="/process_image" method="post" enctype="multipart/form-data" id="imageForm">
+                                <input type="file" name="image" accept="image/*" required>
+                                <button type="submit">Convert to Speech</button>
+                                <center><button type="button" id="endTaskButton" style="display: none;">End Task</button></center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Function to end task and restart the server
+        function endTask() {
+            var audioElement = document.getElementById('audioElement');
+            if (audioElement) {
+                audioElement.pause();
+                audioElement.currentTime = 0;
+            }
+            document.getElementById('imageForm').reset();
+            document.getElementById('endTaskButton').style.display = 'none';
+            // Send a request to the server to restart
+            fetch('/end_task', { method: 'POST' })
+                .then(response => {
+                    // Check if the request was successful
+                    if (!response.ok) {
+                        throw new Error('Failed to restart server');
+                    }
+                    // Redirect to the home page
+                    window.location.href = '/';
+                })
+                .catch(error => console.error(error));
+        }
+
+        // Event listener for form submission
+        document.getElementById('imageForm').addEventListener('submit', function() {
+            // Show the reset button when form is submitted
+            document.getElementById('endTaskButton').style.display = 'block';
+        });
+
+        // Event listener for the end task button
+        document.getElementById('endTaskButton').addEventListener('click', endTask);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const modeBtn = document.getElementById('mode');
+        modeBtn.onchange = (e) => {
+            if (modeBtn.checked === true) {
+                document.documentElement.classList.remove("light")
+                document.documentElement.classList.add("dark")
+                window.localStorage.setItem('mode', 'dark');
+            } else {
+                document.documentElement.classList.remove("dark")
+                document.documentElement.classList.add("light")
+                window.localStorage.setItem('mode', 'light');
+            }
+        }
+
+        const mode = window.localStorage.getItem('mode');
+        if (mode == 'dark') {
+            modeBtn.checked = true;
+            document.documentElement.classList.remove("light")
+            document.documentElement.classList.add("dark")
+        }
+
+        if (mode == 'light') {
+            modeBtn.checked = false;
+            document.documentElement.classList.remove("dark")
+            document.documentElement.classList.add("light")
+        }
+    </script>
+</body>
+</html>
