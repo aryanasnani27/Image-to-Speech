@@ -22,21 +22,22 @@ body {
     margin-bottom: 30px;
 }
 
-.team-members {
+.about-developer {
     margin-top: 50px;
 }
 
-.team-members h3 {
+.about-developer h3 {
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.team-members ul {
+.about-developer ul {
     list-style: none;
     padding: 0;
 }
 
-.team-members ul li {
+.about-developer ul li {
     font-size: 1.1rem;
     margin-bottom: 10px;
 }
+
